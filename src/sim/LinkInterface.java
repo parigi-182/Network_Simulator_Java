@@ -1,3 +1,4 @@
+package sim;
 public interface LinkInterface {
 
     void transmit(Packet packet, Nic sender);

@@ -1,3 +1,4 @@
+package sim;
 import java.util.Random;
 
 public class Nic{
@@ -8,7 +9,7 @@ public class Nic{
     private PointToPointLink link;
     private Device owner;
     
-    public Nic(String interfaceName, String macAddres){
+    public Nic(String interfaceName){
         this.interfaceName = interfaceName;
         this.macAddress = generateRandomMac();
     }
@@ -57,6 +58,20 @@ public class Nic{
         this.owner = owner;
     }
 
-    
+    @Override
+    public String toString() {
+        /* TODO: include super string later */
+        String out = "NIC name: " + this.interfaceName + " MAC: " + this.macAddress;
+        if(link==null){
+            out += " - disconnected\n";
+        }else{
+            if(link.getNic0().equals(this)){
+                out += " - connected to " + link.getNic1().getMacAddress() + " on " + link.getNic1().getInterfaceName() + " at " + link.getNic1().getOwner().getName();
+            }else{
+                out += " - connected to " + link.getNic0().getMacAddress() + " on " + link.getNic0().getInterfaceName() + " at " + link.getNic0().getOwner().getName();
+            }
+        }
+        return out;
+    }
 
 }

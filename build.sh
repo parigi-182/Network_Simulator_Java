@@ -1,2 +1,1 @@
-mkdir -p out
-javac -d out src/sim/*.java
+javac -d out src/sim/*.java src/app/Main.java

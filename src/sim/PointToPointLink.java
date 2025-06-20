@@ -1,3 +1,4 @@
+package sim;
 public class PointToPointLink {
     private final Nic nic0;
     private final Nic nic1;

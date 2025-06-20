@@ -1,1 +1,1 @@
-java -cp out sim.Main
+java -cp out app.Main
