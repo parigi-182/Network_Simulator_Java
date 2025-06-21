@@ -1,6 +1,8 @@
 package app;
 
 import sim.Device;
+import sim.EthernetFrame;
+import sim.PacketType;
 import sim.PointToPointLink;
 
 public class Main {
@@ -15,6 +17,9 @@ public class Main {
         PointToPointLink.connect(a.getNic("eth0"), b.getNic("eth1"));
         System.out.println(a.toString());
         System.out.println(b.toString());
+        System.out.println();System.out.println();System.out.println();
+        
+        a.sendFrame("eth0", new EthernetFrame(a.getNic("eth0").getMacAddress(), b.getNic("eth1").getMacAddress(), PacketType.DATA));
         
     }
 }

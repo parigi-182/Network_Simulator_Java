@@ -25,6 +25,14 @@ public class Device {
     public Nic getNic(String name){
         return nics.get(name);
     }
+
+    public void sendFrame(String iface, EthernetFrame ethFrame){
+        Nic nic = nics.get(iface);
+        if (nic == null) {
+            throw new IllegalArgumentException("Interface not found: " + iface);
+        }
+        nic.send(ethFrame);
+    }
     
     public Collection<Nic> getAllNics() {
         return Collections.unmodifiableCollection(nics.values());
@@ -44,5 +52,10 @@ public class Device {
             out.append("\n\t").append(v.toString());
             });
         return out.toString();
+    }
+
+    
+    public void handle(EthernetFrame ethFrame, Nic nic) {
+        System.out.println(this.name + " on " + nic.getInterfaceName() + " received " + ethFrame.getType() + " from " + nic.getLink().getOther(nic).getOwner());
     }
 }

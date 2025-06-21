@@ -2,5 +2,6 @@ package sim;
 public enum PacketType {
     ARP,
     DHCP,
-    DATA
+    DATA,
+    IPV4
 }
