@@ -27,10 +27,11 @@ public class PointToPointLink {
         return nic1;
     }
 
-    public void transmit(EthernetFrame ethFrame) {
+    public void transmit(EthernetFrame ethFrame, Nic sender) {
         /* TODO: broadcasts */
-        if(ethFrame.getDestination().equals(nic0.getMacAddress())){ nic0.receive(ethFrame); }
-        if(ethFrame.getDestination().equals(nic1.getMacAddress())){ nic1.receive(ethFrame); }
+
+        if(nic0.equals(sender)){nic1.receive(ethFrame);}
+        if(nic1.equals(sender)){nic0.receive(ethFrame);}
     }
 
 }

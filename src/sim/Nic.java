@@ -37,11 +37,11 @@ public class Nic{
     }
 
     public void receive(EthernetFrame ethFrame){
-        owner.handle(ethFrame, this);
+        owner.handleFrame(ethFrame, this);
     }
 
     public void send(EthernetFrame ethFrame){
-        link.transmit(ethFrame);
+        link.transmit(ethFrame, this);
     }
 
     @Override

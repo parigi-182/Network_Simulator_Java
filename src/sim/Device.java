@@ -55,7 +55,7 @@ public class Device {
     }
 
     
-    public void handle(EthernetFrame ethFrame, Nic nic) {
+    public void handleFrame(EthernetFrame ethFrame, Nic nic) {
         System.out.println(this.name + " on " + nic.getInterfaceName() + " received " + ethFrame.getType() + " from " + nic.getLink().getOther(nic).getOwner());
     }
 }
